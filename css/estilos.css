@@ -1,0 +1,166 @@
+/*------------------------------------------------ Fuente de Google Fonts ----------------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+
+/* Tema Claro (Adwaita) */
+:root {
+    --bg-color: #f6f5f4;
+    --surface-color: #ffffff;
+    --text-color: #3d3d3d;
+    --accent-color: #3584e4;
+    --btn-bg-color: #f0f0f0;
+    --btn-hover-color: #e0e0e0;
+    --op-btn-color: #dcdcdc;
+    --op-btn-hover-color: #c9c9c9;
+    --border-radius: 12px;
+    --shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/*----------------------------------------------- Tema Oscuro Automático -------------------------------------------------------------------*/
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #222226;
+        --surface-color: #3d3d3d;
+        --text-color: #e0e0e0;
+        --accent-color: #5fa8ff;
+        --btn-bg-color: #4a4a4a;
+        --btn-hover-color: #5a5a5a;
+        --op-btn-color: #5f5f5f;
+        --op-btn-hover-color: #6a6a6a;
+        --shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+}
+
+body {
+    font-family: 'Comfortaa', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.calculadora-container {
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+.cientifica-container{
+    max-width: 520px
+}
+
+.calculadora {
+    padding: 20px;
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+
+h1 {
+    font-size: 2em;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.pantalla-container {
+    margin-bottom: 20px;
+}
+
+#pantalla {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    font-size: 2.5em;
+    text-align: right;
+    border: none;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+}
+
+.botones {
+    display: grid;
+    gap: 10px;
+}
+
+/*------------------------------------------------  Grid para cada calculadora ------------------------------------------------------------*/
+#calc-basica .botones {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+#calc-cientifica .botones {
+     grid-template-columns: repeat(5, 1fr);
+}
+
+.btn {
+    padding: 20px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--btn-bg-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: var(--btn-hover-color);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.num {
+    background-color: var(--btn-bg-color);
+}
+
+.op, .op-sci {
+    background-color: var(--op-btn-color);
+}
+.op:hover, .op-sci:hover {
+    background-color: var(--op-btn-hover-color);
+}
+
+
+.igual {
+    background-color: var(--accent-color);
+    color: white;
+}
+.igual:hover {
+     background-color: #2a73c9;
+}
+
+
+.btn-largo {
+    grid-column: span 2;
+}
+
+.btn-cambio {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.btn-cambio:hover {
+    background-color: #2a73c9;
+}
+
+/*------------------------------------------------------------- Responsividad ---------------------------------------------------------------------*/
+@media (max-width: 480px) {
+    .btn {
+        padding: 15px;
+        font-size: 1.2em;
+    }
+    #pantalla {
+        font-size: 2em;
+    }
+}
+    
