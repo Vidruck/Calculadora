@@ -163,4 +163,171 @@ h1 {
         font-size: 2em;
     }
 }
-    
+/* -------------------------------------------------  Estilos Geometría ------------------------------------------------------------------------*/
+
+/* Contenedor principal de la página */
+.geo-container {
+    width: 90%;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    color: var(--text-color);
+}
+
+.geo-container h1 {
+    text-align: center;
+    color: var(--text-color);
+}
+
+/* Layout de 2 columnas (menú e imagen) */
+.geo-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+/* Columna izquierda (menú) */
+.geo-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.selector-figuras {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; 
+    background-color: var(--bg-color);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.selector-figuras div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.selector-figuras label {
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.selector-figuras input[type="radio"] {
+    accent-color: var(--accent-color);
+    transform: scale(1.2);
+}
+
+/* Contenedor de inputs dinámicos */
+.geo-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 1px dashed var(--op-btn-color);
+    border-radius: 8px;
+}
+
+.geo-inputs label {
+    font-weight: 700;
+    margin-top: 0.5rem;
+}
+
+.geo-inputs input[type="number"] {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 1em;
+    padding: 0.75rem;
+    border: 1px solid var(--op-btn-color);
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Botón de calcular */
+#btnCalcularGeo {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2em;
+    font-weight: 700;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#btnCalcularGeo:hover {
+     background-color: #2a73c9; 
+}
+
+
+/* Estilo de error para validación */
+.input-error {
+    border: 2px solid #e74c3c !important; 
+    box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+}
+
+.error-msg {
+    color: #e74c3c;
+    font-weight: 700;
+}
+
+
+/* Columna derecha (visualización) */
+.geo-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 300px;
+}
+
+#imgFigura {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* Contenedor de resultados */
+.geo-resultado {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    min-height: 50px;
+}
+
+.geo-resultado h4 {
+    margin-top: 0;
+}
+
+/* Contenedor de navegación inferior */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--op-btn-color);
+    padding-top: 1.5rem;
+}
+
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+    .geo-layout {
+        grid-template-columns: 1fr; /* Una sola columna */
+    }
+
+    .geo-visual {
+        /* Pasa la imagen arriba en móviles */
+        order: -1; 
+    }
+}

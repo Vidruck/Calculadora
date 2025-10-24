@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculadora Geometrica</title>
+        <link rel="stylesheet" type="text/css" href="../css/estilos.css">
+        <script src="../scripts/geo-script.js" type="text/javascript"></script>
+    </head>
+    <body>
+    <div class="geo-container">
+        <h1>Cálculo Geométrico</h1>
+        <div class="geo-layout">
+            <div class="geo-menu">
+                <h3>Por favor, seleccione una figura:</h3>
+                <div class="slector-figuras">
+                    <div><input type="radio" id="cuadrado" name="figura" value="cuadrado" checked>
+                    <label for="cuadrado">Cuadrado</label>
+                    </div>
+                    <div><input type="radio" id="rectangulo" name="figura" value="rectangulo" checked>
+                    <label for="rectangulo">Rectangulo</label>
+                    </div>
+                     <div><input type="radio" id="circulo" name="figura" value="circulo" checked>
+                    <label for="circulo">Circulo</label>
+                    </div>
+                    <div><input type="radio" id="triangulo" name="figura" value="triangulo" checked>
+                    <label for="triangulo">Triangulo Rectangulo</label>
+                    </div>
+                </div>
+                <div id="geo-inputs" class="geo-inputs">
+                    </div>
+                <button id="btnCalcularGeo" class="btn-cambio">Calcular</button>
+                <div id="geo-resultado" class="geo-resultado">
+                </div>
+            </div>
+            <div class="geo-visual">
+                <img id="imgFigura"  alt="Figura seleccionada">
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="btn-cambio">Básica</a>
+            <a href="cientifica.html" class="btn-cambio">Científica</a>
+        </div>
+    </div>
+    </body>
+</html>
