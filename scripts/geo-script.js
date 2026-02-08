@@ -84,6 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Inmunidad del objeto de configuración para prevenir modificaciones en tiempo de ejecución
+    Object.freeze(figuras);
+
     // --- Funciones de Lógica de Interfaz ---
 
     /**
@@ -130,7 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
             input.classList.remove('input-error');
 
             const valor = parseFloat(input.value);
-            if (input.value === '' || isNaN(valor) || valor <= 0) {
+            // Validación estricta: debe ser un número finito y positivo
+            if (input.value === '' || !isFinite(valor) || isNaN(valor) || valor <= 0) {
                 esValido = false;
                 input.classList.add('input-error');
             }

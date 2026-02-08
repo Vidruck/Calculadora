@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Referencias a Elementos del DOM ---
     const pantalla = document.getElementById('pantalla');
     const botones = document.querySelector('.botones');
-    
+
     /** @type {string} Almacena la expresión matemática actual en formato de texto */
     let expresion = '';
 
@@ -29,13 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     expresion = '';
                     pantalla.value = '';
                     break;
-                    
+
                 case 'backspace':
                     // Elimina el último caracter ingresado
                     expresion = expresion.slice(0, -1);
                     pantalla.value = expresion;
                     break;
-                    
+
                 case '=':
                     // Intenta evaluar la expresión acumulada
                     try {
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         expresion = '';
                     }
                     break;
-                    
+
                 case 'sin':
                 case 'cos':
                 case 'tan':
@@ -59,13 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     expresion += value + '(';
                     pantalla.value = expresion;
                     break;
-                    
+
                 case 'pi':
                     // Inyecta el valor de la constante PI de Math
                     expresion += Math.PI;
                     pantalla.value = expresion;
                     break;
-                    
+
                 default:
                     // Entrada de números y operadores básicos (+, -, *, /)
                     expresion += value;
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         exp = exp.replace(/sin\(([^)]+)\)/g, (match, num) => Math.sin(evaluarParentesis(num) * Math.PI / 180));
         exp = exp.replace(/cos\(([^)]+)\)/g, (match, num) => Math.cos(evaluarParentesis(num) * Math.PI / 180));
         exp = exp.replace(/tan\(([^)]+)\)/g, (match, num) => Math.tan(evaluarParentesis(num) * Math.PI / 180));
-        
+
         // Logaritmos y Raíces
         exp = exp.replace(/log\(([^)]+)\)/g, (match, num) => Math.log10(evaluarParentesis(num)));
         exp = exp.replace(/ln\(([^)]+)\)/g, (match, num) => Math.log(evaluarParentesis(num)));
@@ -112,10 +112,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         /**
-         * Evaluación Segura de Expresión Aritmética.
-         * Se utiliza el constructor de Function para ejecutar el retorno de la expresión 
-         * como código JavaScript de forma controlada.
+         * Validación de Seguridad:
+         * Verifica que la expresión procesada contenga SOLO caracteres permitidos (números, operadores, funciones Math).
+         * Esto previene ataques de inyección de código (XSS/Code Injection).
          */
-        return new Function('return ' + exp)();
+        const tokensPermitidos = /[0-9\.\+\-\*\/\(\)\s]|Math\.(sin|cos|tan|log|log10|sqrt|PI)/g;
+        const residuos = exp.replace(tokensPermitidos, '');
+
+        if (residuos.trim().length > 0) {
+            console.error("Intento de ejecución de código no permitido:", residuos);
+            throw new Error("Expresión insegura");
+        }
+
+        try {
+            /**
+             * Evaluación Segura de Expresión Aritmética.
+             * Se utiliza el constructor de Function para ejecutar el retorno de la expresión 
+             * como código JavaScript de forma controlada tras la validación.
+             */
+            const resultado = new Function('return ' + exp)();
+
+            // Validaciones numéricas post-calculo
+            if (!isFinite(resultado) || isNaN(resultado)) {
+                throw new Error("Resultado inválido");
+            }
+            return resultado;
+        } catch (err) {
+            throw err;
+        }
     }
 });
