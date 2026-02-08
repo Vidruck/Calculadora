@@ -8,7 +8,7 @@ Este proyecto es una aplicación web que ofrece diferentes tipos de calculadoras
 
 ## 👤 Información del Autor
 - **Autor:** Alejandro González Hernández
-Todos los derechos reservados © 2026
+Todos los derechos reservados
 ---
 
 ## 📁 Estructura del Proyecto
