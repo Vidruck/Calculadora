@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+  PROYECTO: Calculadora Básica - Científica - Geométrica
+  ARCHIVO: cientifica.html
+  DESCRIPCIÓN: Interfaz para la calculadora científica con funciones trigonométricas y logarítmicas.
+  AUTOR: Alejandro González Hernández
+-->
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora científica avanzada con funciones matemáticas complejas.">
+    <title>Calculadora Científica</title>
+
+    <!-- Hojas de Estilo y Scripts -->
+    <link rel="stylesheet" type="text/css" href="../css/estilos.css">
+    <script type="text/javascript" src="../scripts/script.js"></script>
+</head>
+
+<body>
+    <div class="calculadora-container cientifica-container">
+        <h1>Calculadora Científica</h1>
+
+        <!-- Componente Principal: Calculadora Científica -->
+        <div class="calculadora" id="calc-cientifica">
+            <!-- Pantalla de visualización -->
+            <div class="pantalla-container">
+                <input type="text" id="pantalla" readonly aria-label="Pantalla de calculadora científica">
+            </div>
+
+            <!-- Teclado de botones (Grid layout con soporte para funciones extra) -->
+            <div class="botones">
+                <!-- Acciones de control y potencias -->
+                <button class="btn op" data-value="clear">AC</button>
+                <button class="btn op" data-value="backspace">⌫</button>
+                <button class="btn op-sci" data-value="sqrt">√</button>
+                <button class="btn op-sci" data-value="^">^</button>
+                <button class="btn op" data-value="%">%</button>
+
+                <!-- Funciones trigonométricas y logarítmicas -->
+                <button class="btn op-sci" data-value="sin">sin</button>
+                <button class="btn op-sci" data-value="cos">cos</button>
+                <button class="btn op-sci" data-value="tan">tan</button>
+                <button class="btn op-sci" data-value="log">log</button>
+                <button class="btn op-sci" data-value="ln">ln</button>
+
+                <!-- Teclado numérico y paréntesis -->
+                <button class="btn num" data-value="7">7</button>
+                <button class="btn num" data-value="8">8</button>
+                <button class="btn num" data-value="9">9</button>
+                <button class="btn op" data-value="(">(</button>
+                <button class="btn op" data-value=")">)</button>
+
+                <button class="btn num" data-value="4">4</button>
+                <button class="btn num" data-value="5">5</button>
+                <button class="btn num" data-value="6">6</button>
+                <button class="btn op" data-value="*">×</button>
+                <button class="btn op" data-value="/">÷</button>
+
+                <button class="btn num" data-value="1">1</button>
+                <button class="btn num" data-value="2">2</button>
+                <button class="btn num" data-value="3">3</button>
+                <button class="btn op" data-value="+">+</button>
+                <button class="btn op" data-value="-">−</button>
+
+                <button class="btn num btn-largo" data-value="0">0</button>
+                <button class="btn num" data-value=".">.</button>
+                <button class="btn op-sci" data-value="pi">π</button>
+                <button class="btn igual" data-value="=">=</button>
+            </div>
+        </div>
+
+        <!-- Navegación entre vistas -->
+        <div class="nav-links">
+            <a href="index.html" class="btn-cambio">Básica</a>
+            <a href="geometrica.html" class="btn-cambio">Geométrica</a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+  PROYECTO: Calculadora Básica - Científica - Geométrica
+  ARCHIVO: index.html
+  DESCRIPCIÓN: Interfaz para la calculadora básica con operaciones elementales.
+  AUTOR: Alejandro González Hernández
+-->
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora básica con una interfaz moderna inspirada en Adwaita/GTK4.">
+    <title>Calculadora Básica</title>
+
+    <!-- Hojas de Estilo y Scripts -->
+    <link rel="stylesheet" type="text/css" href="../css/estilos.css">
+    <script type="text/javascript" src="../scripts/script.js"></script>
+</head>
+
+<body>
+    <div class="calculadora-container">
+        <h1>Calculadora Básica</h1>
+
+        <!-- Componente Principal: Calculadora -->
+        <div class="calculadora" id="calc-basica">
+            <!-- Pantalla de visualización de resultados -->
+            <div class="pantalla-container">
+                <input type="text" id="pantalla" readonly aria-label="Pantalla de la calculadora">
+            </div>
+
+            <!-- Teclado de botones (Grid layout definido en CSS) -->
+            <div class="botones">
+                <!-- Fila 1: Acciones de control -->
+                <button class="btn op" data-value="clear">AC</button>
+                <button class="btn op" data-value="backspace">⌫</button>
+                <button class="btn op" data-value="%">%</button>
+                <button class="btn op" data-value="/">÷</button>
+
+                <!-- Fila 2 -->
+                <button class="btn num" data-value="7">7</button>
+                <button class="btn num" data-value="8">8</button>
+                <button class="btn num" data-value="9">9</button>
+                <button class="btn op" data-value="*">×</button>
+
+                <!-- Fila 3 -->
+                <button class="btn num" data-value="4">4</button>
+                <button class="btn num" data-value="5">5</button>
+                <button class="btn num" data-value="6">6</button>
+                <button class="btn op" data-value="-">−</button>
+
+                <!-- Fila 4 -->
+                <button class="btn num" data-value="1">1</button>
+                <button class="btn num" data-value="2">2</button>
+                <button class="btn num" data-value="3">3</button>
+                <button class="btn op" data-value="+">+</button>
+
+                <!-- Fila 5: Cero, Punto e Igual -->
+                <button class="btn num btn-largo" data-value="0">0</button>
+                <button class="btn num" data-value=".">.</button>
+                <button class="btn igual" data-value="=">=</button>
+            </div>
+        </div>
+
+        <!-- Navegación entre vistas -->
+        <div class="nav-links">
+            <a href="cientifica.html" class="btn-cambio">Científica</a>
+            <a href="geometrica.html" class="btn-cambio">Geométrica</a>
+        </div>
+    </div>
+</body>
+
+</html>

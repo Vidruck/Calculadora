@@ -1,0 +1,383 @@
+/*
+ * =============================================================================
+ * PROYECTO: Calculadora Básica - Científica - Geométrica
+ * DESCRIPCIÓN: Estilos visuales basados en la estética Adwaita (GTK4)
+ * AUTOR: Alejandro González Hernández
+ * ASIGNATURA: Programación Web
+ * =============================================================================
+ */
+
+/* --- Importación de Fuentes --- */
+/* Comfortaa es una fuente geométrica redondeada que encaja con el estilo Adwaita */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+
+/* --- Sistema de Diseño: Tokens y Variables --- */
+/* Definición del Tema Claro por defecto */
+:root {
+    /* Colores de Fondo y Superficie */
+    --bg-color: #f6f5f6;
+    /* Gris muy claro con tinte frío */
+    --surface-color: #f8f9ff;
+    /* Blanco azulado muy suave */
+    --text-color: #1a1a21;
+    /* Azul marino profundo para texto */
+
+    /* Identidad Visual (Accent) */
+    --accent-color: #00d1ff;
+    /* Cian Eléctrico vibrante */
+
+    /* Botones Numéricos y General */
+    --btn-bg-color: #f0f0f0;
+    --btn-hover-color: #e0e0e0;
+
+    /* Botones de Operación (Sidebars/Funciones) */
+    --op-btn-color: #dcdcdc;
+    --op-btn-hover-color: #c9c9c9;
+
+    /* Geometría y Sombras */
+    --border-radius: 12px;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Tema Oscuro (Dark Mode) --- */
+/* Se activa automáticamente según la configuración del sistema del usuario */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #0d0d12;
+        /* Negro azulado profundo */
+        --surface-color: #1a1a21;
+        /* Azul marino muy oscuro */
+        --text-color: #d0d0d0;
+        /* Gris plateado suave */
+        --accent-color: #00d1f9;
+        /* Cian brillante optimizado para oscuridad */
+        --btn-bg-color: #111116;
+        --btn-hover-color: #222226;
+        --op-btn-color: #222226;
+        --op-btn-hover-color: #333339;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* --- Estilos Base (Reset y Estructura) --- */
+body {
+    font-family: 'Comfortaa', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* --- Contenedores de la Calculadora --- */
+.calculadora-container {
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Ajuste de ancho para la versión científica por tener más columnas */
+.cientifica-container {
+    max-width: 520px
+}
+
+.calculadora {
+    padding: 20px;
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+h1 {
+    font-size: 2em;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+/* --- Componente: Pantalla de Resultados --- */
+.pantalla-container {
+    margin-bottom: 20px;
+}
+
+#pantalla {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    font-size: 2.5em;
+    /* Fuente grande para lectura clara */
+    text-align: right;
+    border: none;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+}
+
+/* --- Componente: Teclado (Grid Layout) --- */
+.botones {
+    display: grid;
+    gap: 10px;
+}
+
+/* Configuración específica de columnas según el tipo de calculadora */
+#calc-basica .botones {
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 columnas para básica */
+}
+
+#calc-cientifica .botones {
+    grid-template-columns: repeat(5, 1fr);
+    /* 5 columnas para científica */
+}
+
+/* --- Botones Genéricos --- */
+.btn {
+    padding: 20px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--btn-bg-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+/* Estados Interactivos */
+.btn:hover {
+    background-color: var(--btn-hover-color);
+}
+
+.btn:active {
+    transform: scale(0.95);
+    /* Micro-animación de pulsación */
+}
+
+/* Tipos de Botones Específicos */
+.num {
+    background-color: var(--btn-bg-color);
+}
+
+.op,
+.op-sci {
+    background-color: var(--op-btn-color);
+}
+
+.op:hover,
+.op-sci:hover {
+    background-color: var(--op-btn-hover-color);
+}
+
+/* Botón de Resultado (Igual) */
+.igual {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.igual:hover {
+    background-color: #00a8cc;
+    /* Cian oscuro para contraste en hover */
+}
+
+/* Botón de doble ancho (Cero o similares) */
+.btn-largo {
+    grid-column: span 2;
+}
+
+/* Enlaces de navegación entre calculadoras */
+.btn-cambio {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.btn-cambio:hover {
+    background-color: #00a8cc;
+}
+
+/* --- Responsividad: Dispositivos Móviles --- */
+@media (max-width: 480px) {
+    .btn {
+        padding: 15px;
+        font-size: 1.2em;
+    }
+
+    #pantalla {
+        font-size: 2em;
+    }
+}
+
+/* =============================================================================
+ * ESTILOS ESPECÍFICOS: CALCULADORA GEOMÉTRICA
+ * =============================================================================
+ */
+
+/* Contenedor principal de la página de geometría */
+.geo-container {
+    width: 90%;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    color: var(--text-color);
+}
+
+.geo-container h1 {
+    text-align: center;
+}
+
+/* Layout de 2 columnas (menú e imagen) mediante Grid */
+.geo-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+/* Columna izquierda: Selección y Parámetros */
+.geo-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Selector de radio buttons para figuras */
+.selector-figuras {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    background-color: var(--bg-color);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.selector-figuras div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.selector-figuras label {
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.selector-figuras input[type="radio"] {
+    accent-color: var(--accent-color);
+    transform: scale(1.2);
+}
+
+/* Formulario de inputs dinámicos */
+.geo-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 1px dashed var(--op-btn-color);
+    border-radius: 8px;
+}
+
+.geo-inputs label {
+    font-weight: 700;
+    margin-top: 0.5rem;
+}
+
+.geo-inputs input[type="number"] {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 1em;
+    padding: 0.75rem;
+    border: 1px solid var(--op-btn-color);
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Botón principal de cálculo geométrico */
+#btnCalcularGeo {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2em;
+    font-weight: 700;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#btnCalcularGeo:hover {
+    background-color: #00a8cc;
+}
+
+/* --- Estados de Error y Validación --- */
+.input-error {
+    border: 2px solid #e74c3c !important;
+    box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+}
+
+.error-msg {
+    color: #e74c3c;
+    font-weight: 700;
+}
+
+/* --- Columna derecha: Visualización de Figura --- */
+.geo-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 300px;
+}
+
+#imgFigura {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* --- Visualización de Resultados --- */
+.geo-resultado {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    min-height: 50px;
+}
+
+.geo-resultado h4 {
+    margin-top: 0;
+}
+
+/* --- Navegación Inferior (Footer del Container) --- */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--op-btn-color);
+    padding-top: 1.5rem;
+}
+
+/* --- Responsividad Geometría --- */
+@media (max-width: 768px) {
+    .geo-layout {
+        grid-template-columns: 1fr;
+        /* Una sola columna en tablets/móviles */
+    }
+
+    .geo-visual {
+        order: -1;
+        /* Mover la imagen arriba del menú en móviles */
+    }
+}
